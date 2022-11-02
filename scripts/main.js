@@ -34,10 +34,10 @@ readQuote()
 
 function writeHikes() {
     //define a variable for the collection you want to create in Firestore to populate data
-    var hikesRef = db.collection("Hikes");
+    var hikesRef = db.collection("hikes");
 
     hikesRef.add({
-        code: "BBY01.jpg",
+        code: "BBY01",
         name: "Burnaby Lake Park Trail", //replace with your own city?
         city: "Burnaby",
         province: "BC",
@@ -47,7 +47,7 @@ function writeHikes() {
         last_updated: firebase.firestore.FieldValue.serverTimestamp()
     });
     hikesRef.add({
-        code: "AM01.jpg",
+        code: "AM01",
         name: "Buntzen Lake Trail Trail", //replace with your own city?
         city: "Anmore",
         province: "BC",
@@ -57,7 +57,7 @@ function writeHikes() {
         last_updated: firebase.firestore.FieldValue.serverTimestamp()
     });
     hikesRef.add({
-        code: "NV01.jpg",
+        code: "NV01",
         name: "Mount Seymoure Trail", //replace with your own city?
         city: "North Vancouver",
         province: "BC",
@@ -70,10 +70,10 @@ function writeHikes() {
 
 writeHikes();
 
-function displayCards(Hikes) {
+function displayCards(hikes) {
     let cardTemplate = document.getElementById("hikeCardTemplate");
 
-    db.collection(Hikes).get()
+    db.collection(hikes).get()
         .then(snap => {
             //var i = 1;  //if you want to use commented out section
             snap.forEach(doc => { //iterate thru each doc
@@ -93,7 +93,7 @@ function displayCards(Hikes) {
                 // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
                 //attach to gallery
-                document.getElementById(Hikes + "-go-here").appendChild(newcard);
+                document.getElementById(hikes + "-go-here").appendChild(newcard);
                 //i++;   //if you want to use commented out section
             })
         })
